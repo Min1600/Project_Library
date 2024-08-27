@@ -24,19 +24,16 @@ this.pages = pages.value
 this.read = read.checked
   }
 
-  readStatus(){
-    input.forEach((item) =>{
-      item.checked=!item.checked
- })
-this.read = read.checked
-newBook(myLibrary[myLibrary.length-1])
-  }
-
-
-
-
 }
 
+
+function readStatus(){
+  input.forEach((item) =>{
+    item.checked=!item.checked
+})
+this.read = read.checked
+newBook(myLibrary[myLibrary.length-1])
+}
 
 function  reset(){
   input.forEach((item) =>{
