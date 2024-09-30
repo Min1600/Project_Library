@@ -35,30 +35,46 @@ function removeBook(el){
   el.style.border = "none"
 }
 
-function readStatus(el){
-el.checked = !el.checked
-
+function readStatus(item, el){
+ read.checked = !read.checked
+ item = read.checked
+test(item, el)
 }
+
+
+function test(item, el){
+  el.textContent = ""
+  item === true
+  ?el.textContent += `Read: Already read`
+  :el.textContent += `Read: Not read yet`
+  }
 
 function newBook(book){
   const card = document.createElement("div")
+  const authorText = document.createElement("div")
+  const titleText = document.createElement("div")
+  const pagesText = document.createElement("div")
+  const readText = document.createElement("div")
   const readButton = document.createElement("button")
   const removeBtn = document.createElement("button")
 
     card.className = "card"
     card.style.border = "solid black 1px"
-    card.style.whiteSpace = "pre"
-    card.textContent = `Author: ${book.author}\r\n`
-    card.textContent += `Title: ${book.title} \r\n`
-    card.textContent += `Number of Pages: ${book.pages} \r\n`
-    card.textContent += `Read: ${book.read} \r\n`
-
+  
+    authorText.textContent = `Author: ${book.author}`
+    titleText.textContent += `Title: ${book.title}`
+    pagesText.textContent += `Number of Pages: ${book.pages}`
+   test(book.read, readText)
     readButton.textContent = "Change read status"
     removeBtn.textContent = "Remove book from library"
     removeBtn.addEventListener("click", () => removeBook(card))
-    readButton.addEventListener("click", () => readStatus(book.read))
+    readButton.addEventListener("click", () => readStatus(book.read, readText))
 
     container.appendChild(card)
+    card.appendChild(authorText)
+    card.appendChild(titleText)
+    card.appendChild(pagesText)
+    card.appendChild(readText)
     card.appendChild(readButton)
     card.appendChild(removeBtn)
 }
