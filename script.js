@@ -16,18 +16,15 @@ const form = document.querySelector("form")
 const readButton = document.createElement("button")
 const removeBtn = document.createElement("button")
 
-class Book{
-  constructor(){
-this.author = author.value
-this.title = title.value
-this.pages = pages.value
-this.read = read.checked
+function Book(){
+  this.author = author.value
+  this.title = title.value
+  this.pages = pages.value
+  this.read = read.checked
   }
 
-}
 
-
-function readStatus(){
+Book.prototype.readStatus = function(){
   input.forEach((item) =>{
     item.checked=!item.checked
 })
