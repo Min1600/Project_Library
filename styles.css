@@ -3,13 +3,9 @@
 gap: 5rem;
 }
 
-
 .card{
-    border: black solid 1px;
-    min-width: 50px;
-    min-height: 50px;
+    margin-bottom: 1rem;
 }
-
 form{
     display: flex;
     flex-direction: column;

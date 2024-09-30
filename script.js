@@ -1,6 +1,4 @@
-const myLibrary = [
-  
-];
+const myLibrary = [];
 const container = document.querySelector(".container")
 const showButton = document.querySelector(".new")
 const closeButton = document.querySelector(".close")
@@ -11,10 +9,8 @@ const read = document.getElementById("read")
 const author = document.querySelector("#author")
 const title = document.querySelector("#title")
 const pages = document.querySelector("#pages")
-const card = document.createElement("div")
 const form = document.querySelector("form")
-const readButton = document.createElement("button")
-const removeBtn = document.createElement("button")
+
 
 function Book(){
 this.author = author.value
@@ -23,13 +19,8 @@ this.pages = pages.value
 this.read = read.checked
 }
 
-Book.prototype.readStatus = function (){
-  input.forEach((item) =>{
-        item.checked=!item.checked
-   })
-  this.read = read.checked
-  console.log(read.checked)
- newBook(myLibrary[myLibrary.length-1])
+Book.prototype.readStatus = function (el){
+
 }
 
 function reset(){
@@ -45,22 +36,32 @@ myLibrary.push(book)
 
 
 function newBook(book){
+  const card = document.createElement("div")
+  const readButton = document.createElement("button")
+  const removeBtn = document.createElement("button")
+
+    card.className = "card"
+    card.style.border = "solid black 1px"
+    card.style.whiteSpace = "pre"
+    card.textContent = `Author: ${book.author}\r\n`
+    card.textContent += `Title: ${book.title} \r\n`
+    card.textContent += `Number of Pages: ${book.pages} \r\n`
+    card.textContent += `Read: ${book.read} \r\n`
+
     readButton.textContent = "Change read status"
     removeBtn.textContent = "Remove book from library"
-    card.className = "card"
-    card.innerHTML = 
-    `<p>Author: ${book.author}</p>
-    <p>Title: ${book.title}</p>
-    <p>Number of Pages: ${book.pages}</p>
-     <p>Read: ${book.read}</p>`
+    removeBtn.addEventListener("click", () => removeBook(card))
+    readButton.addEventListener("click", () => myLibrary[myLibrary.length-1].readStatus())
+
     container.appendChild(card)
     card.appendChild(readButton)
     card.appendChild(removeBtn)
 }
 
 
-function removeBook(){
-    card.innerHTML = ""
+function removeBook(el){
+    el.textContent = ""
+    el.style.border = "none"
 }
 
 showButton.addEventListener("click", () =>{
@@ -82,6 +83,5 @@ reset()
  })
 
 
-readButton.addEventListener("click", () => myLibrary[myLibrary.length-1].readStatus())
 
-removeBtn.addEventListener("click", () => removeBook())
+
