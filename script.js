@@ -37,7 +37,7 @@ function removeBook(el){
 
 function readStatus(el){
 el.checked = !el.checked
-newBook(el)
+
 }
 
 function newBook(book){
@@ -56,7 +56,7 @@ function newBook(book){
     readButton.textContent = "Change read status"
     removeBtn.textContent = "Remove book from library"
     removeBtn.addEventListener("click", () => removeBook(card))
-    readButton.addEventListener("click", () => readStatus(card))
+    readButton.addEventListener("click", () => readStatus(book.read))
 
     container.appendChild(card)
     card.appendChild(readButton)
