@@ -19,10 +19,6 @@ this.pages = pages.value
 this.read = read.checked
 }
 
-Book.prototype.readStatus = function (el){
-
-}
-
 function reset(){
     input.forEach((item) =>{
         item.checked=false
@@ -34,6 +30,15 @@ let book = new Book()
 myLibrary.push(book)
 }
 
+function removeBook(el){
+  el.textContent = ""
+  el.style.border = "none"
+}
+
+function readStatus(el){
+el.checked = !el.checked
+newBook(el)
+}
 
 function newBook(book){
   const card = document.createElement("div")
@@ -51,17 +56,11 @@ function newBook(book){
     readButton.textContent = "Change read status"
     removeBtn.textContent = "Remove book from library"
     removeBtn.addEventListener("click", () => removeBook(card))
-    readButton.addEventListener("click", () => myLibrary[myLibrary.length-1].readStatus())
+    readButton.addEventListener("click", () => readStatus(card))
 
     container.appendChild(card)
     card.appendChild(readButton)
     card.appendChild(removeBtn)
-}
-
-
-function removeBook(el){
-    el.textContent = ""
-    el.style.border = "none"
 }
 
 showButton.addEventListener("click", () =>{
