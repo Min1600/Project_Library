@@ -89,7 +89,7 @@ reset()
  })
 
  addButton.addEventListener("click", (event) =>{
-   if(form.checkValidity){
+   if(form.checkValidity()){
     addBookToLibrary()
     newBook(myLibrary[myLibrary.length-1])
     event.preventDefault()
